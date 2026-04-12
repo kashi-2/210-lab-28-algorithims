@@ -7,10 +7,12 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 
+//Functions
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+void sort_goats(list<Goat>& trip); //milestone 1 Sort
 int main_menu();
 
 int main() {
@@ -44,7 +46,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 4) {
+    while (sel != 5) {  // milestone 1 quit option change
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -68,7 +70,7 @@ int main() {
 
     return 0;
 }
-
+// --------Menu--------
 int main_menu() {
     cout << "*** GOAT MANAGER 3001 ***\n";
     cout << "[1] Add a goat\n";
@@ -78,13 +80,13 @@ int main_menu() {
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > 5) {  //changed choice > 5 instead of choice > 4
         cout << "Invalid, again --> ";
         cin >> choice;
     }
     return choice;
 }
-
+// Delete Goat
 void delete_goat(list<Goat> &trip) {
     cout << "DELETE A GOAT\n";
     int index = select_goat(trip);
@@ -93,7 +95,7 @@ void delete_goat(list<Goat> &trip) {
     trip.erase(it);
     cout << "Goat deleted. New trip size: " << trip.size() << endl;
 }
-
+//Add Goat
 void add_goat(list<Goat> &trip, string nms[], string cls[]) {
     cout << "ADD A GOAT\n";
     int age = rand() % MAX_AGE;
@@ -103,7 +105,7 @@ void add_goat(list<Goat> &trip, string nms[], string cls[]) {
     trip.push_back(tmp);
     cout << "Goat added. New trip size: " << trip.size() << endl;
 }
-
+//Display trip
 void display_trip(list<Goat> trp) {
     int i = 1;
     for (auto gt: trp)
@@ -113,7 +115,7 @@ void display_trip(list<Goat> trp) {
              << " (" << gt.get_age() 
              << ", " << gt.get_color() << ")\n";
 }
-
+//Seledct Goat
 int select_goat(list<Goat> trp) {
     int input;
     cout << "Make a selection:\n";
