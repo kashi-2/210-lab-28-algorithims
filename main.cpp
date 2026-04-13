@@ -8,12 +8,12 @@ using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
 
-//Functions
+//Function prototypes
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
-void sort_goats(list<Goat>& trip); //milestone 1 Sort
+void sort_goats(list<Goat>&); //milestone 1 Sort
 int main_menu();
 
 int main() {
@@ -61,6 +61,9 @@ int main() {
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+            case 4:                         //milestone 1
+                sort_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -73,11 +76,12 @@ int main() {
 }
 // --------Menu--------
 int main_menu() {
-    cout << "*** GOAT MANAGER 3001 ***\n";
+    cout << "\n*** GOAT MANAGER 3001 ***\n";
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    cout << "[4] Sort goats\n";   //milestone 1
+    cout << "[5] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -116,16 +120,22 @@ void display_trip(list<Goat> trp) {
              << " (" << gt.get_age() 
              << ", " << gt.get_color() << ")\n";
 }
-//Seledct Goat
-int select_goat(list<Goat> trp) {
-    int input;
-    cout << "Make a selection:\n";
-    display_trip(trp);
-    cout << "Choice --> ";
-    cin >> input;
-    while (input < 1 or input > trp.size()) {
-        cout << "Invalid choice, again --> ";
-        cin >> input;
-    }
-    return input;
+//Seledct Goat //************RMEMOVECOMMENTS FROM HERE */
+//int select_goat(list<Goat> trp) {
+    //int input;
+    //cout << "Make a selection:\n";
+   // display_trip(trp);
+    //cout << "Choice --> ";
+   // cin >> input;
+    //while (input < 1 or input > trp.size()) {
+        //cout << "Invalid choice, again --> ";
+        //cin >> input;
+    //}
+   // return input;
+    //*******END */
+//Sort Goat: Milestone 1
+void sort_goats(list<Goat>& trip) {
+    trip.sort();
+    cout << "Sorted goats. \n";
+
 }
