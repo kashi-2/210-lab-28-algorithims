@@ -21,6 +21,7 @@ void count_color(list<Goat>);           //milestone 4 Count color
 void unique_goats(list<Goat>&);         //milestone 5 Unique goats
 void oldest_goat(list<Goat>);           //milestone 6 Oldest goat
 void youngest_goat(list<Goat>);         //milestone 7 Youngest goat
+void clear_goats(list<Goat>&);          //milestone 8 Clear Goat
 
 int main_menu();
 
@@ -90,6 +91,9 @@ int main() {
             case 10:                        //milsetone 7
                 youngest_goat(trip);
                 break;
+            case 11:                        //milsetone 8
+                clear_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -113,10 +117,13 @@ int main_menu() {
     cout << "[8] Remove duplicates\n";                      //milestone 5        
     cout << "[9] Oldest goat\n";                            //milsetone 6    
     cout << "[10] Youngest goat\n";                         //milsetone 7
-    //cout << "[8] Quit\n";
+    cout << "[11] Clear all goats\n";                       //milsetone 8
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
+
     int choice;
     cin >> choice;
+    
     while (choice < 1 || choice > 12) {  //changed choice > 5 instead of choice > 4 || changed to choice > 6 (milestone2 going to repeat without adding comment)
         cout << "Invalid, again --> ";
         cin >> choice;
@@ -253,7 +260,10 @@ void youngest_goat(list<Goat> trip) {
          << ", " << youngest.get_color() << ")\n";
 }
 
-
-
+//CLEAR LIST: Milestone 8
+void clear_goats(list<Goat>& trip) {
+    trip.clear();
+    cout << "All goats removed.\n";
+}
 
 
