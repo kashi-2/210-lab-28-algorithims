@@ -14,6 +14,7 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 void sort_goats(list<Goat>&); //milestone 1 Sort
+void reverse_goats(list<Goat>&);    //milestone 2 Reverse list
 int main_menu();
 
 int main() {
@@ -64,6 +65,9 @@ int main() {
             case 4:                         //milestone 1
                 sort_goats(trip);
                 break;
+           case 5:                          //milestone 2
+                reverse_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -81,11 +85,12 @@ int main_menu() {
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     cout << "[4] Sort goats\n";   //milestone 1
-    cout << "[5] Quit\n";
+    cout << "[5] Reverse list\n";   //milestone 2
+    cout << "[6] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 5) {  //changed choice > 5 instead of choice > 4
+    while (choice < 1 || choice > 6) {  //changed choice > 5 instead of choice > 4 || changed to choice > 6 (milestone2 going to repeat without adding comment)
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -138,4 +143,10 @@ void sort_goats(list<Goat>& trip) {
     trip.sort();
     cout << "Sorted goats. \n";
 
+}
+
+//Reverse Goat: Milestone 2
+void reverse_goats(list<Goat>& trip) {
+    trip.reverse();
+    cout << "List reversed.\n";
 }
