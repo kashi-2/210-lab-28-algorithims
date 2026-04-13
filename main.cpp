@@ -19,6 +19,7 @@ void reverse_goats(list<Goat>&);        //milestone 2 Reverse list
 void find_goat(list<Goat>);             //milestone 3 Find goat
 void count_color(list<Goat>);           //milestone 4 Count color
 void unique_goats(list<Goat>&);         //milestone 5 Unique goats
+void oldest_goat(list<Goat>);           //milestone 6 Oldest goat
 
 int main_menu();
 
@@ -82,6 +83,9 @@ int main() {
             case 8:                         //milsetone 5
                 unique_goats(trip);
                 break;
+            case 9:                         //milsetone 6
+                oldest_goat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -102,7 +106,8 @@ int main_menu() {
     cout << "[5] Reverse list\n";                           //milestone 2
     cout << "[6] Find goat by name\n";                      //milestone 3
     cout << "[7] Count goats by color\n";                   //milestone 4
-    cout << "[8] Remove duplicates\n";                      //milestone 5            
+    cout << "[8] Remove duplicates\n";                      //milestone 5        
+    cout << "[9] Oldest goat\n";                            //milsetone 6    
     //cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -142,19 +147,19 @@ void display_trip(list<Goat> trp) {
              << " (" << gt.get_age() 
              << ", " << gt.get_color() << ")\n";
 }
-//Seledct Goat //************RMEMOVECOMMENTS FROM HERE */
-//int select_goat(list<Goat> trp) {
-    //int input;
-    //cout << "Make a selection:\n";
-   // display_trip(trp);
-    //cout << "Choice --> ";
-   // cin >> input;
-    //while (input < 1 or input > trp.size()) {
-        //cout << "Invalid choice, again --> ";
-        //cin >> input;
-    //}
-   // return input;
-    //*******END */
+/*Select Goat
+   int select_goat(list<Goat> trp) {
+   int input;
+   cout << "Make a selection:\n";
+   display_trip(trp);
+   cout << "Choice --> ";
+   cin >> input;
+    while (input < 1 or input > trp.size()) {
+        cout << "Invalid choice, again --> ";
+        cin >> input;
+    }
+   return input;
+   */
 //Sort Goat: Milestone 1
 void sort_goats(list<Goat>& trip) {
     trip.sort();
@@ -213,6 +218,20 @@ void unique_goats(list<Goat>& trip) {
     cout << "Duplicates removed.\n";
 }
 
+// OLDEST GOAT: MILESTONE 6 
+void oldest_goat(list<Goat> trip) {
+    Goat oldest = *trip.begin();
+
+    for (auto g : trip) {
+        if (g.get_age() > oldest.get_age())
+            oldest = g;
+    }
+
+    cout << "Oldest: "
+         << oldest.get_name()
+         << " (" << oldest.get_age()
+         << ", " << oldest.get_color() << ")\n";
+}
 
 
 
