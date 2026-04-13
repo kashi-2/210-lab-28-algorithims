@@ -14,9 +14,10 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 
-void sort_goats(list<Goat>&); //milestone 1 Sort
-void reverse_goats(list<Goat>&);    //milestone 2 Reverse list
-void find_goat(list<Goat>); //Milestone 3
+void sort_goats(list<Goat>&);           //milestone 1 Sort
+void reverse_goats(list<Goat>&);        //milestone 2 Reverse list
+void find_goat(list<Goat>);             //milestone 3 Find goat
+void count_color(list<Goat>);           //milestone 4 Count color
 
 int main_menu();
 
@@ -74,6 +75,9 @@ int main() {
             case 6:                         //milestone 3
                 find_goat(trip);
                 break;
+            case 7:                         //milestone 4
+                count_color(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -90,10 +94,10 @@ int main_menu() {
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Sort goats\n";   //milestone 1
-    cout << "[5] Reverse list\n";   //milestone 2
-    cout << "[6] Find goat by name\n";  //milestone 3
-    //NEXT
+    cout << "[4] Sort goats\n";                             //milestone 1
+    cout << "[5] Reverse list\n";                           //milestone 2
+    cout << "[6] Find goat by name\n";                      //milestone 3
+    cout << "[7] Count goats by color\n";                   //milestone 4
     //cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -181,7 +185,21 @@ void find_goat(list<Goat> trip) {
         cout << "Goat not found.\n";
 }
 
+//Count by color: Milestone 4
+void count_color(list<Goat> trip) {
+    string color;
+    cout << "Enter color: ";
+    cin >> color;
 
+    int count = 0;
+
+    for (auto g : trip) {
+        if (g.get_color() == color)
+            count++;
+    }
+
+    cout << "Total goats with color " << color << ": " << count << endl;
+}
 
 
 
