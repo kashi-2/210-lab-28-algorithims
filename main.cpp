@@ -13,8 +13,11 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+
 void sort_goats(list<Goat>&); //milestone 1 Sort
 void reverse_goats(list<Goat>&);    //milestone 2 Reverse list
+void find_goat(list<Goat>); //Milestone 3
+
 int main_menu();
 
 int main() {
@@ -68,6 +71,9 @@ int main() {
            case 5:                          //milestone 2
                 reverse_goats(trip);
                 break;
+            case 6:                         //milestone 3
+                find_goat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -86,11 +92,13 @@ int main_menu() {
     cout << "[3] List goats\n";
     cout << "[4] Sort goats\n";   //milestone 1
     cout << "[5] Reverse list\n";   //milestone 2
-    cout << "[6] Quit\n";
+    cout << "[6] Find goat by name\n";  //milestone 3
+    //NEXT
+    //cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 6) {  //changed choice > 5 instead of choice > 4 || changed to choice > 6 (milestone2 going to repeat without adding comment)
+    while (choice < 1 || choice > 12) {  //changed choice > 5 instead of choice > 4 || changed to choice > 6 (milestone2 going to repeat without adding comment)
         cout << "Invalid, again --> ";
         cin >> choice;
     }
@@ -150,3 +158,38 @@ void reverse_goats(list<Goat>& trip) {
     trip.reverse();
     cout << "List reversed.\n";
 }
+
+//Find goat: Milestone 3
+void find_goat(list<Goat> trip) {
+    string name;
+    cout << "Enter name: ";
+    cin >> name;
+
+    bool found = false;
+
+    for (auto g : trip) {
+        if (g.get_name() == name) {
+            cout << "Found: "
+                 << g.get_name()
+                 << " (" << g.get_age()
+                 << ", " << g.get_color() << ")\n";
+            found = true;
+        }
+    }
+
+    if (!found)
+        cout << "Goat not found.\n";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
