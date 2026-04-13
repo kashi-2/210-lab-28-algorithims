@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <list>
 #include "Goat.h"
+#include <ctime>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25;
@@ -35,6 +36,7 @@ int main() {
     int i = 0;
     while (fin >> names[i++]);
     fin.close();
+    
     ifstream fin1("colors.txt");
     string colors[SZ_COLORS];
     i = 0;
@@ -44,6 +46,7 @@ int main() {
     // create & populate a trip of Goats using std::list of random size 8-15
     int tripSize = rand() % 8 + 8;
     list<Goat> trip;
+    
     int age;
     string name, color;
     for (int i = 0; i < tripSize; i++) {
@@ -56,7 +59,7 @@ int main() {
     
     // Goat Manager 3001 Engine
     int sel = main_menu();
-    while (sel != 5) {  // milestone 1 quit option change
+    while (sel != 12) {  // milestone 1 quit
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -159,7 +162,7 @@ void display_trip(list<Goat> trp) {
              << " (" << gt.get_age() 
              << ", " << gt.get_color() << ")\n";
 }
-/*Select Goat
+
    int select_goat(list<Goat> trp) {
    int input;
    cout << "Make a selection:\n";
@@ -171,7 +174,7 @@ void display_trip(list<Goat> trp) {
         cin >> input;
     }
    return input;
-   */
+}
 //Sort Goat: Milestone 1
 void sort_goats(list<Goat>& trip) {
     trip.sort();

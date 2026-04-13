@@ -27,6 +27,11 @@ public:
     bool operator< (const Goat &other) const {
         return name < other.name;
     }
+
+    //allowing std::list::unique() to compare goats
+    bool operator==(const Goat &other) const {
+        return name == other.name;
+    }
 };
 
 #endif
