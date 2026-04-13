@@ -20,6 +20,7 @@ void find_goat(list<Goat>);             //milestone 3 Find goat
 void count_color(list<Goat>);           //milestone 4 Count color
 void unique_goats(list<Goat>&);         //milestone 5 Unique goats
 void oldest_goat(list<Goat>);           //milestone 6 Oldest goat
+void youngest_goat(list<Goat>);         //milestone 7 Youngest goat
 
 int main_menu();
 
@@ -86,6 +87,9 @@ int main() {
             case 9:                         //milsetone 6
                 oldest_goat(trip);
                 break;
+            case 10:                        //milsetone 7
+                youngest_goat(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -108,6 +112,7 @@ int main_menu() {
     cout << "[7] Count goats by color\n";                   //milestone 4
     cout << "[8] Remove duplicates\n";                      //milestone 5        
     cout << "[9] Oldest goat\n";                            //milsetone 6    
+    cout << "[10] Youngest goat\n";                         //milsetone 7
     //cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -233,8 +238,20 @@ void oldest_goat(list<Goat> trip) {
          << ", " << oldest.get_color() << ")\n";
 }
 
+// YOUNGEST Goat: Milestone 7
+void youngest_goat(list<Goat> trip) {
+    Goat youngest = *trip.begin();
 
+    for (auto g : trip) {
+        if (g.get_age() < youngest.get_age())
+            youngest = g;
+    }
 
+    cout << "Youngest: "
+         << youngest.get_name()
+         << " (" << youngest.get_age()
+         << ", " << youngest.get_color() << ")\n";
+}
 
 
 
