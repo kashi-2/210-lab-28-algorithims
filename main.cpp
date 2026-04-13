@@ -18,6 +18,7 @@ void sort_goats(list<Goat>&);           //milestone 1 Sort
 void reverse_goats(list<Goat>&);        //milestone 2 Reverse list
 void find_goat(list<Goat>);             //milestone 3 Find goat
 void count_color(list<Goat>);           //milestone 4 Count color
+void unique_goats(list<Goat>&);         //milestone 5 Unique goats
 
 int main_menu();
 
@@ -78,6 +79,9 @@ int main() {
             case 7:                         //milestone 4
                 count_color(trip);
                 break;
+            case 8:                         //milsetone 5
+                unique_goats(trip);
+                break;
             default:
                 cout << "Invalid selection.\n";
                 break;
@@ -98,6 +102,7 @@ int main_menu() {
     cout << "[5] Reverse list\n";                           //milestone 2
     cout << "[6] Find goat by name\n";                      //milestone 3
     cout << "[7] Count goats by color\n";                   //milestone 4
+    cout << "[8] Remove duplicates\n";                      //milestone 5            
     //cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
@@ -201,7 +206,12 @@ void count_color(list<Goat> trip) {
     cout << "Total goats with color " << color << ": " << count << endl;
 }
 
-
+//Unique goats: Milestone 5
+void unique_goats(list<Goat>& trip) {
+    trip.sort();
+    trip.unique();
+    cout << "Duplicates removed.\n";
+}
 
 
 
